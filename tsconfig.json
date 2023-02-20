@@ -4,7 +4,7 @@
     "useDefineForClassFields": true,
     "module": "ESNext",
     "lib": ["ESNext", "DOM"],
-    "moduleResolution": "Node",
+    "moduleResolution": "node",
     "strict": true,
     "sourceMap": true,
     "resolveJsonModule": true,
@@ -18,9 +18,10 @@
     "declaration": true,
     "outDir": "dist",
     "types": ["vite/client"],
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
-      "@/*": ["./lib"]
+      "@/*": ["lib"],
+      "lib/*": ["lib/*"]
     }
   },
   "include": ["lib/main.ts"]

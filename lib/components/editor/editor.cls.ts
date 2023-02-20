@@ -17,7 +17,7 @@ interface IElementAttributes {
 
 export class Editor extends HTMLElement {
   private _template: EditorTemplate;
-  private _textEvent: CustomEvent;
+  // private _textEvent: CustomEvent;
   private _unique: number;
   private _eventsFormat: Record<string, IElementEvent> = {};
 
@@ -25,7 +25,7 @@ export class Editor extends HTMLElement {
     super();
     this._unique = uniqueHash();
     this._template = new EditorTemplate();
-    this._textEvent = new CustomEvent("text", { detail: { text: "" } });
+    // this._textEvent = new CustomEvent("text", { detail: { text: "" } });
   }
 
   private _render() {
@@ -83,28 +83,28 @@ export class Editor extends HTMLElement {
     return lineRange;
   }
 
-  private _getSelection() {
-    const selection = window.getSelection();
+  // private _getSelection() {
+  //   const selection = window.getSelection();
 
-    if (selection && selection.rangeCount > 0) {
-      const range = selection.getRangeAt(0);
-      const sourceRange = document.createRange();
-      sourceRange.selectNode(this);
-      const parent = range.commonAncestorContainer;
-      console.log(parent);
-      if (parent.nodeType === Node.ELEMENT_NODE) {
-        parent.normalize();
-        return;
-      }
-      if (
-        range.compareBoundaryPoints(Range.START_TO_START, sourceRange) >= 0 &&
-        range.compareBoundaryPoints(Range.END_TO_END, sourceRange) <= 0
-      ) {
-        const span = this._createElement({ tag: "span" } as IElementAttributes);
-        range.surroundContents(span);
-      }
-    }
-  }
+  //   if (selection && selection.rangeCount > 0) {
+  //     const range = selection.getRangeAt(0);
+  //     const sourceRange = document.createRange();
+  //     sourceRange.selectNode(this);
+  //     const parent = range.commonAncestorContainer;
+  //     console.log(parent);
+  //     if (parent.nodeType === Node.ELEMENT_NODE) {
+  //       parent.normalize();
+  //       return;
+  //     }
+  //     if (
+  //       range.compareBoundaryPoints(Range.START_TO_START, sourceRange) >= 0 &&
+  //       range.compareBoundaryPoints(Range.END_TO_END, sourceRange) <= 0
+  //     ) {
+  //       const span = this._createElement({ tag: "span" } as IElementAttributes);
+  //       range.surroundContents(span);
+  //     }
+  //   }
+  // }
 
   private _initEventFormats(): Record<string, IElementEvent> {
     const { bold } = this._template.classNames;
@@ -127,8 +127,8 @@ export class Editor extends HTMLElement {
 
   private _bold() {
     // this._getSelection();
-    const selection = window.getSelection();
-    const range = selection?.getRangeAt(0);
+    // const selection = window.getSelection();
+    // const range = selection?.getRangeAt(0);
     // seleccionar la linea ubicada el cursor
   }
 

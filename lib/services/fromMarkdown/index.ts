@@ -32,7 +32,6 @@ export function isMarkdown(value: string): boolean {
 
 export function convertFromMarkdown(value: string) {
   const regex = new RegExp(`(${Object.keys(codeMarkdownOpen).join("|")})\\s{1}(.*)\\n?`, "g");
-  console.log(regex);
 
   return value.replaceAll(regex, (_, ...args) => {
     const [matchArg, text, , str] = args;
